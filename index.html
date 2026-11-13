@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mangi Fashon</title>
+<title>Mangi Fashon</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%238c2f39%27/%3E%3Ctext x=%2750%27 y=%2770%27 font-size=%2762%27 text-anchor=%27middle%27 fill=%27%23f0c85a%27 font-family=%27Georgia%27%3EM%3C/text%3E%3C/svg%3E">
 <style>
 :root{--bg:#f6e7d0;--g2:#f0d4c4;--g3:#e8dcc8;--card:rgba(255,250,242,.88);--solid:#fffaf2;--text:#2b2118;--muted:#7a6a58;--accent:#8c2f39;--line:#e2d4bf;--ok:#2e7d4f;color-scheme:light}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1410;--g2:#2c1a1c;--g3:#1b1a24;--card:rgba(42,33,26,.88);--solid:#2a211a;--text:#f3e9da;--muted:#b9a68f;--line:#4a3b2d;color-scheme:dark}}
@@ -12,7 +12,7 @@
 body{margin:0;font-family:Georgia,"Segoe UI",Tahoma,serif;color:var(--text);min-height:100vh;background:linear-gradient(120deg,var(--bg),var(--g2),var(--g3),var(--bg));background-size:300% 300%;animation:bgm 18s ease infinite}
 @keyframes bgm{50%{background-position:100% 50%}}
 @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-@keyframes snip{0%,100%{transform:rotate(0)}50%{transform:rotate(-14deg)}}
+@keyframes bob{50%{transform:translateY(-6px)}}
 @keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
 #bg{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
 .hide{display:none!important}
@@ -29,7 +29,7 @@ label,.kv{display:flex;justify-content:space-between;gap:8px;font-size:.85rem;co
 #login{min-height:100vh;display:grid;place-items:center;padding:20px}
 #login .card{width:100%;max-width:380px;text-align:center}
 #login .card.sh{animation:shake .5s}
-.logo{width:96px;height:96px;margin:0 auto;color:var(--accent);animation:snip 2.4s ease-in-out infinite;transform-origin:50% 60%;cursor:pointer;display:block}
+.logo{width:96px;height:96px;margin:0 auto;color:var(--accent);animation:bob 4s ease-in-out infinite;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35));cursor:pointer;display:block}
 h1{margin:8px 0 2px;font-size:1.7rem}.sub{color:var(--muted);font-size:.9rem;margin:0 0 12px}
 .err{color:#d6382e;min-height:1.3em;font-size:.95rem;margin:8px 0;font-weight:600}
 header{display:flex;align-items:center;gap:10px;padding:12px 16px;position:sticky;top:0;background:var(--card);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:5}
@@ -54,7 +54,7 @@ h3{margin:0 0 6px}
 </head>
 <body>
 <canvas id="bg"></canvas>
-<svg width="0" height="0" style="position:absolute"><symbol id="lg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="34" cy="72" r="9" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="66" cy="72" r="9" fill="none" stroke="currentColor" stroke-width="4"/><path d="M38 64 L60 22 M62 64 L40 22" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M12 50 Q50 38 88 50" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4" fill="none"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6df9a"/><stop offset=".5" stop-color="#d4a63a"/><stop offset="1" stop-color="#8c6a1a"/></linearGradient></defs><symbol id="lg" viewBox="0 0 120 120"><circle cx="60" cy="60" r="57" fill="currentColor"/><circle cx="60" cy="60" r="57" fill="none" stroke="url(#gd)" stroke-width="3"/><circle cx="60" cy="60" r="50" fill="none" stroke="url(#gd)" stroke-width="1" stroke-dasharray="2.5 3"/><path d="M31 74V34l29 26 29-26v40" fill="none" stroke="url(#gd)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M24 90H92" stroke="url(#gd)" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="88" cy="90" rx="2.6" ry="1.5" fill="currentColor" stroke="url(#gd)" stroke-width="1"/><path d="M88 90C104 80 108 101 92 101S62 96 36 101" fill="none" stroke="url(#gd)" stroke-width="1.6" stroke-dasharray="3 2.2"/><circle cx="60" cy="18" r="2.5" fill="url(#gd)"/></symbol></svg>
 
 <section id="login"><div class="card" id="lc">
   <svg class="logo" id="logo"><use href="#lg"/></svg>
@@ -63,11 +63,11 @@ h3{margin:0 0 6px}
   <input id="pw" type="password" placeholder="Password · كلمة المرور" autocomplete="current-password">
   <div class="err" id="err"></div>
   <button class="btn" id="go" style="width:100%" data-l="Enter|دخول"></button>
-  <div id="cr" class="hide" style="margin-top:14px"><input id="cc" type="password" placeholder="Creator code"><button class="btn alt" id="cgo" style="width:100%;margin-top:8px">Creator entry</button></div>
+  <div id="cr" class="hide" style="margin-top:14px;border-top:1px solid var(--line);padding-top:12px"><a class="btn alt" href="tel:+2499033440956" style="width:100%;text-decoration:none;flex-direction:column;gap:2px">📞 Contact the creator · تواصل مع المطور<b dir="ltr">+249 9033440956</b></a><input id="cc" type="password" placeholder="Creator code · رمز المطور" style="margin-top:10px"><button class="btn" id="cgo" style="width:100%;margin-top:8px">Creator entry · دخول المطور</button></div>
 </div></section>
 
 <div id="app" class="hide">
-  <header><svg><use href="#lg"/></svg><b class="shopName">Mangi Fashon</b><span class="tag" id="cloud">…</span><button class="btn alt" id="out" data-l="Log out|خروج"></button></header>
+  <header><svg><use href="#lg"/></svg><b class="shopName">Mangi Fashon</b><span class="tag" id="cloud" style="cursor:pointer">…</span><button class="btn alt" id="out" data-l="Log out|خروج"></button></header>
   <nav><button class="btn on" data-t="cust" data-l="Customers|العملاء"></button><button class="btn alt" data-t="set" data-l="Settings|الإعدادات"></button></nav>
   <main>
     <div class="greet" id="greet"></div>
@@ -123,7 +123,7 @@ h3{margin:0 0 6px}
 (function(){
 var CFG={apiKey:"AIzaSyBQRW-VKK0_oPQbt2_Va0F0-rRG9f2bzrw",authDomain:"apex-dev-277d6.firebaseapp.com",projectId:"apex-dev-277d6",storageBucket:"apex-dev-277d6.firebasestorage.app",messagingSenderId:"458321752944",appId:"1:458321752944:web:bc17cb9d3580bc068915b5",measurementId:"G-TN2H6TH9GE"};
 var CREATOR="MANGI-CREATOR-2026"; /* creator's emergency code: change it */
-var K_S="mangi_settings",K_C="mangi_customers",K_L="mangi_lock",mem={},FB=null;
+var K_S="mangi_settings",K_C="mangi_customers",K_L="mangi_lock",mem={},FB=null,lastErr="";
 function ld(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return mem[k]!==undefined?mem[k]:d}}
 function sv(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 var S=Object.assign({shop:"Mangi Fashon",owner:"Mangi",pass:"Mangi123@",cur:"$",phone:"",addr:"",foot:"Thank you · شكراً لكم",col:"#8c2f39",theme:"auto"},ld(K_S,{}));
@@ -141,9 +141,10 @@ theme();
 
 /* login + lock */
 function L(){return ld(K_L,{n:0,until:0})}
-function tick(){var l=L(),r=l.until-Date.now(),dis=r>0;$("pw").disabled=$("go").disabled=dis;
-if(dis){var m=Math.floor(r/60000),s=Math.floor(r%60000/1000);$("err").textContent="Locked 15 min · مقفل  "+m+":"+(s<10?"0":"")+s;setTimeout(tick,1000)}
-else if(l.until){sv(K_L,{n:0,until:0});$("err").textContent=""}}
+var tk;function tick(){clearTimeout(tk);var l=L(),r=l.until-Date.now(),dis=r>0;$("pw").disabled=$("go").disabled=dis;
+if(dis){$("cr").classList.remove("hide");var m=Math.floor(r/60000),s=Math.floor(r%60000/1000);$("err").textContent="Locked 15 min · مقفل  "+m+":"+(s<10?"0":"")+s;tk=setTimeout(tick,1000)}
+else{if(l.until){sv(K_L,{n:0,until:0});$("err").textContent="You can try again · يمكنك المحاولة مرة أخرى"}if(!crOpen)$("cr").classList.add("hide")}}
+document.addEventListener("visibilitychange",tick);
 function enter(){sv(K_L,{n:0,until:0});$("login").classList.add("hide");$("app").classList.remove("hide");greet();render();toast("Welcome · أهلاً "+S.owner)}
 function login(){var l=L();if(l.until>Date.now())return;
 if($("pw").value===S.pass){$("pw").value="";$("err").textContent="";enter();return}
@@ -151,8 +152,8 @@ l.n++;$("pw").value="";var c=$("lc");c.classList.remove("sh");void c.offsetWidth
 if(l.n>=3){l.until=Date.now()+900000;sv(K_L,l);tick()}
 else{sv(K_L,l);$("err").textContent="Wrong password · كلمة المرور خاطئة ("+(3-l.n)+")"}}
 $("go").onclick=login;$("pw").onkeydown=function(e){if(e.key==="Enter")login()};
-var tc=0,tt;$("logo").onclick=function(){tc++;clearTimeout(tt);tt=setTimeout(function(){tc=0},2000);if(tc>=5){$("cr").classList.remove("hide");tc=0}};
-$("cgo").onclick=function(){if($("cc").value===CREATOR){$("cc").value="";enter()}else toast("Wrong code")};
+var crOpen=false,tc=0,tt;$("logo").onclick=function(){tc++;clearTimeout(tt);tt=setTimeout(function(){tc=0},2000);if(tc>=5){crOpen=true;$("cr").classList.remove("hide");tc=0}};
+$("cgo").onclick=function(){if($("cc").value===CREATOR){$("cc").value="";crOpen=false;$("cr").classList.add("hide");$("err").textContent="";enter()}else toast("Wrong code · رمز خاطئ")};
 $("out").onclick=function(){$("app").classList.add("hide");$("login").classList.remove("hide");tick()};
 tick();
 
@@ -164,7 +165,7 @@ function seg(cur){$("pNew").classList.toggle("hide",cur);$("pCur").classList.tog
 $("tNew").onclick=function(){seg(false)};$("tCur").onclick=function(){seg(true);render()};
 
 /* data */
-function put(c){sv(K_C,C);if(FB)FB.f.setDoc(FB.f.doc(FB.d,"customers",String(c.id)),c).catch(function(){toast("Cloud save failed")})}
+function put(c){sv(K_C,C);if(FB)FB.f.setDoc(FB.f.doc(FB.d,"customers",String(c.id)),c).catch(function(e){lastErr=e.code||"";toast("Cloud save failed · "+lastErr)})}
 function today(){return new Date().toISOString().slice(0,10)}
 function clearForm(){editId=null;["n","m","a","p","t"].forEach(function(i){$(i).value=""});$("d").value=today();$("ftitle").textContent="New customer · عميل جديد"}
 function read(){return{name:$("n").value.trim(),mob:$("m").value.trim(),addr:$("a").value.trim(),price:$("p").value,date:$("d").value,det:$("t").value.trim()}}
@@ -205,13 +206,19 @@ if($("pn").value.length<4){toast("Too short · قصيرة");return}if($("pn").va
 S.pass=$("pn").value;saveS();["pc","pn","pf"].forEach(function(i){$(i).value=""});toast("Password changed ✓ · تم التغيير")};
 
 /* firebase */
-(async function(){try{
+var local0=C.slice();
+$("cloud").onclick=function(){toast(lastErr==="permission-denied"?"Firestore rules block access: allow read, write":lastErr==="not-found"?"Create the Firestore Database first":lastErr||$("cloud").textContent)};
+(async function(){var set=function(m){$("cloud").textContent=m};set("… connecting");try{
 var base="https://www.gstatic.com/firebasejs/10.12.2/";
 var a=await import(base+"firebase-app.js"),f=await import(base+"firebase-firestore.js");
-var d=f.getFirestore(a.initializeApp(CFG));FB={d:d,f:f};
-f.onSnapshot(f.collection(d,"customers"),function(s){C=s.docs.map(function(x){return x.data()}).sort(function(a,b){return b.id-a.id});sv(K_C,C);render();$("cloud").textContent="☁ Online"},function(){$("cloud").textContent="⚠ Firestore rules"});
-f.onSnapshot(f.doc(d,"shop","settings"),function(s){if(s.exists()){S=Object.assign(S,s.data());sv(K_S,S);theme();greet()}else f.setDoc(f.doc(d,"shop","settings"),S).catch(function(){})},function(){});
-}catch(e){$("cloud").textContent="Offline"}})();
+var d=f.initializeFirestore(a.initializeApp(CFG),{experimentalForceLongPolling:true});FB={d:d,f:f};var o={includeMetadataChanges:true};
+function err(e){lastErr=e.code||e.message;set("⚠ "+(e.code||"error"));toast("Cloud error · "+lastErr)}
+f.onSnapshot(f.collection(d,"customers"),o,function(s){var fc=s.metadata.fromCache;
+if(!(fc&&s.empty)){C=s.docs.map(function(x){return x.data()}).sort(function(a,b){return b.id-a.id});sv(K_C,C);render()}
+set(fc?"⏳ Connecting":"☁ Synced");
+if(!fc&&!ld("mangi_mig",0)){sv("mangi_mig",1);var ids={};s.docs.forEach(function(x){ids[x.id]=1});local0.forEach(function(c){if(!ids[String(c.id)])f.setDoc(f.doc(d,"customers",String(c.id)),c)})}},err);
+f.onSnapshot(f.doc(d,"shop","settings"),o,function(s){if(s.exists()){S=Object.assign(S,s.data());sv(K_S,S);theme();greet()}else if(!s.metadata.fromCache)f.setDoc(f.doc(d,"shop","settings"),S).catch(function(){})},function(){});
+}catch(e){lastErr=e.message;set("Offline")}})();
 
 /* moving background: stitched threads + buttons */
 var cv=$("bg"),x=cv.getContext("2d"),W,H,t=0,P=[];
